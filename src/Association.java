@@ -3,28 +3,37 @@
  * @author Leonel Contreras
  * @version 1.0
  */
-public class Association {
+public class Association<K,V> {
 
     // atributos
-    private String key;
-    private String[] value;
+    private K key;
+    private V value;
 
     // metodos
 
-    public  Association(String key, String palabra1, String palabra2) {
+    public  Association(K key, V value) {
         this.key = key;
-        value = new String[2];
-        value[0] = palabra1;
-        value[1]= palabra2;
+        this.value = value;
+        
     }
 
-    public void setValue(String palabra1, String palabra2) {
-        value[0] = palabra1;
-        value[1] = palabra2;
-    }
+   // get key
+   public K getKey() {
+    return this.key;
+   }
 
-    public String[] getValue() {
-        return this.value;
-    }
+   // get value
+   public V getValue() {
+    return this.value;
+   }
+
+   // set value
+   public void setValue(V value) {
+    this.value = value;
+   }
+
+   public String toString() {
+    return "(" + key + ", " + value + ")";
+   }
     
 }

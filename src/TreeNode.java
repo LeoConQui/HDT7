@@ -86,6 +86,80 @@ public class TreeNode<K,V> {
 	public V search(K key, Comparator<K> comp) {
 		int compRslt = comp.compare(key, pair.getKey());
 
+		// validamos que las llaves coindicen
+		if (compRslt==0) {
+			// retornamos el valor
+			return pair.getValue();
+		} else if(compRslt<0){ // la llave es mayor que el pair get key
+			// validamos que el nodo left sea nulo
+			if (left == null ) {
+				return null;
+			}else{
+				// si no es nulo seguimos la busqueda en el left
+				return left.search(key, comp);
+			}
+		} else{ // el caso en que nos movemos al nodo derecho
+			// validamos que el nodo derecho no sea null
+			if (right == null) {
+				return null;
+			}else{
+				return right.search(key, comp);
+			}
+		}
+
 		
+	}
+
+	/**
+	 * remove es el metodo que remueve un nodo del arbol
+	 * @param key es la llave 
+	 * @param node es el nodo
+	 * @param comp es el comparador de llaves
+	 * @return un objeto de tipo TreeNode que se va a remover
+	 */
+	public TreeNode<K,V> remove(K key, TreeNode<K,V> node, Comparator<K> comp) {
+		if (node == null) {
+			return null;
+		} else if(comp.compare(key, node.pair.getKey())<0){
+			node.left = remove(key, node.left, comp);
+		} else if(comp.compare(key, node.pair.getKey())>0){
+			node.right = remove(key, node.right, comp);
+		}else{
+			node = removeNode(node, comp);
+		}
+
+		return node;
+	}
+
+	/**
+	 * removeNode es un metodo que remueve un nodo
+	 * @param node es el nodo 
+	 * @param comp el un objeto comparator
+	 * @return un objeto de tipo TreeNode
+	 */
+	private TreeNode<K,V> removeNode(TreeNode<K,V> node, Comparator<K> comp) {
+		if (node.left == null) {
+			return node.right;
+		} else if(node.right == null){
+			return node.left;
+		} else{
+			Association<K,V> p = getPredecessor(node.left);
+			node.pair = p;
+			node.left = remove(p.getKey(), node.left, comp);
+			return node;
+		}
+	}
+
+	/**
+	 * getPredecessor es un metodo que obtiene el atributo association del predecesor de un nodo
+	 * @param subtree
+	 * @return
+	 */
+	private Association<K,V> getPredecessor(TreeNode<K,V> subtree) {
+		TreeNode<K,V> tmp = subtree;
+		while (tmp.right != null) {
+			tmp = tmp.right;
+		}
+		return tmp.pair;
 	}
 }

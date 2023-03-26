@@ -35,29 +35,40 @@ public class Principal {
         }
 
         // creamos tres instancias de BST que representan los tres diccionarios
-        BST<String, String[]> diccionarioingles = new BST<String, String[]>(new AscendingStringComparator());
-        BST<String, String[]> diccionarioespanol = new BST<String, String[]>(new AscendingStringComparator());
-        BST<String, String[]> diccionariofrances = new BST<String, String[]>(new AscendingStringComparator());
+        BST<String, String> diccionarioingles = new BST<String, String>(new AscendingStringComparator());
+        BST<String, String> diccionarioespanol = new BST<String, String>(new AscendingStringComparator());
+        BST<String, String> diccionariofrances = new BST<String, String>(new AscendingStringComparator());
 
+        System.out.println(listadelistas.size());
         
         // agregamos todas las palabras al diccionario en ingles
         for (String[] strings : listadelistas) {
             String key = strings[0];
-            diccionarioingles.add(key, strings);
+            System.out.println(key);
+            String value = strings[1]+","+ strings[2];
+            diccionarioingles.add(key, value);
+            System.out.println(diccionarioingles.search(key));
         }
         
         // agregamos todas las palabras al diccionario en espanol
         for (String[] strings : listadelistas) {
             String key = strings[1];
-            diccionarioespanol.add(key, strings);
+            String value = strings[0]+","+ strings[2];
+            diccionarioespanol.add(key, value);
         }
 
         // agregamos todas las palabras al diccionario en frances
         for (String[] strings : listadelistas) {
             String key = strings[2];
-            diccionariofrances.add(key, strings);
+            String value = strings[0]+","+ strings[1];
+            diccionariofrances.add(key, value);
         }
 
+        diccionarioingles.traverse();
+
+        
+
+       
         
     }
 }

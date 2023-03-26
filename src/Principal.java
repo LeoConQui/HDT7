@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 /**
  * Principal es la clase que interactua con el usuario y tiene el metodo main
  * @author Leonel Contreras 18797
@@ -112,11 +113,150 @@ public class Principal {
                 System.out.println("3. Frances");
                 int opcionlenguaje = numero.nextInt();
                 if (opcionlenguaje==1) {
-                    diccionarioingles.traverse();
+                    //diccionarioingles.traverse();
+                    System.out.println("Diccionario Ingles");
+                    for (int i = 0; i < listadelistas.size(); i++) {
+                        String key = listadelistas.get(i)[0];
+                        System.out.println(diccionarioingles.search(key));
+                    }
                 } else if (opcionlenguaje == 2) {
-                    diccionarioespanol.traverse();
+                    //diccionarioespanol.traverse();
+                    System.out.println("Diccionario espanol");
+                    for (int i = 0; i < listadelistas.size(); i++) {
+                        String key = listadelistas.get(i)[1];
+                        System.out.println(diccionarioespanol.search(key));
+                    }
                 }else {
-                    diccionariofrances.traverse();
+                    //diccionariofrances.traverse();
+                    System.out.println("Diccionario frances");
+                    for (int i = 0; i < listadelistas.size(); i++) {
+                        String key = listadelistas.get(i)[2];
+                        System.out.println(diccionariofrances.search(key));
+                    }
+                }
+            }
+
+            if (opcionusuario == 3) {
+                String key;
+                String value;
+
+                Scanner texto = new Scanner(System.in);
+
+                int opcionlenguaje;
+                System.out.println("A que lenguaje desea agregar");
+                System.out.println("1. Ingles");
+                System.out.println("2. Espanol");
+                System.out.println("3. Frances");
+                opcionlenguaje = numero.nextInt();
+
+                if (opcionlenguaje == 1) {
+                    System.out.println("Que palabra desea agregar");
+                    // pedimos al usuario
+                    key = texto.nextLine();
+                    // convertimos a minusculas
+                    key = key.toLowerCase();
+                    // pedimos al usuario
+                    System.out.println("Ingrese las dos traducciones separadas por coma");
+                    value = texto.nextLine();
+                    // convertimos a minusculas
+                    value = value.toLowerCase();
+                    // agregamos al diccionario en ingles 
+                    diccionarioingles.add(key, value);
+                } else if (opcionlenguaje == 2) {
+                    System.out.println("Que palabra desea agregar");
+                    key = texto.nextLine();
+                    key = key.toLowerCase();
+                    System.out.println("Ingrese las traducciones separadas por coma");
+                    value = texto.nextLine();
+                    value = value.toLowerCase();
+                    diccionarioespanol.add(key, value);
+                }else {
+                    System.out.println("Que palabra desea agregar");
+                    key = texto.nextLine();
+                    key = key.toLowerCase();
+                    System.out.println("Ingrese las traducciones separadas por coma");
+                    value = texto.nextLine();
+                    value = value.toLowerCase();
+                    diccionariofrances.add(key, value);
+                }
+            }
+
+            if (opcionusuario == 4) {
+                int opcionlenguaje;
+                String palabra;
+                Scanner texto = new Scanner(System.in);
+                System.out.println("1. Eliminar palabra en diccionario de Ingles");
+                System.out.println("2. Eliminar palabra en diccionario de Espanol");
+                System.out.println("3. Eliminar palabra en diccionario de Frances");
+                opcionlenguaje = numero.nextInt();
+                if (opcionlenguaje == 1) {
+                    // pedimos al usuario que ingrese la palabra
+                    System.out.println("Ingrese palabra a eliminar");
+                    palabra = texto.nextLine();
+                    // la convertimos a minusculas
+                    palabra = palabra.toLowerCase();
+                    // usamos el metodo remove de la clase BST
+                    diccionarioingles.remove(palabra);
+                } else if (opcionlenguaje == 2) {
+                    // pedimos al usuario que ingrese la palabra
+                    System.out.println("Ingrese palabra a eliminar");
+                    palabra = texto.nextLine();
+                    // la convertimos a minusculas
+                    palabra = palabra.toLowerCase();
+                    // usamos el metodo remove de la clase BST
+                    diccionarioespanol.remove(palabra);
+                } else {
+                    // pedimos al usuario que ingrese la palabra
+                    System.out.println("Ingrese palabra a eliminar");
+                    palabra = texto.nextLine();
+                    // la convertimos a minusculas
+                    palabra = palabra.toLowerCase();
+                    // usamos el metodo remove de la clase BST
+                    diccionariofrances.remove(palabra);
+                }
+            }
+
+            if (opcionusuario == 5) {
+                Scanner texto = new Scanner(System.in);
+                int opcionlenguaje;
+                System.out.println("Ingrese lenguaje a editar");
+                System.out.println("1. Ingles");
+                System.out.println("2. Espanol");
+                System.out.println("3. Frances");
+                opcionlenguaje = numero.nextInt();
+                if (opcionlenguaje ==1) {
+                    System.out.println("Ingrese palabra a editar");
+                    String palabravieja = texto.nextLine();
+                    palabravieja = palabravieja.toLowerCase();
+                    System.out.println("Ingrese las nuevas traducciones separadas por coma");
+                    String nuevatraduccion = texto.nextLine();
+                    // eliminamos el nodo viejo
+                    diccionarioingles.remove(palabravieja);
+                    // agregamos un nuevo nodo con la llave de la palabra vieja 
+                    // y la nueva traduccion
+                    diccionarioingles.add(palabravieja, nuevatraduccion);
+                } else if (opcionlenguaje == 2) {
+                    System.out.println("Ingrese palabra a editar");
+                    String palabravieja = texto.nextLine();
+                    palabravieja = palabravieja.toLowerCase();
+                    System.out.println("Ingrese las nuevas traducciones separadas por coma");
+                    String nuevatraduccion = texto.nextLine();
+                    // eliminamos el nodo viejo
+                    diccionarioespanol.remove(palabravieja);
+                    // agregamos un nuevo nodo con la llave de la palabra vieja 
+                    // y la nueva traduccion
+                    diccionarioespanol.add(palabravieja, nuevatraduccion);
+                } else {
+                    System.out.println("Ingrese palabra a editar");
+                    String palabravieja = texto.nextLine();
+                    palabravieja = palabravieja.toLowerCase();
+                    System.out.println("Ingrese las nuevas traducciones separadas por coma");
+                    String nuevatraduccion = texto.nextLine();
+                    // eliminamos el nodo viejo
+                    diccionariofrances.remove(palabravieja);
+                    // agregamos un nuevo nodo con la llave de la palabra vieja 
+                    // y la nueva traduccion
+                    diccionariofrances.add(palabravieja, nuevatraduccion);
                 }
             }
         }

@@ -74,6 +74,7 @@ public class TreeNode<K,V> {
 
 		if (right!=null) {
 			right.traverse();
+			System.out.println(pair);
 		}
 	}
 	

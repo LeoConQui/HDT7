@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 /**
  * Principal es la clase que interactua con el usuario y tiene el metodo main
  * @author Leonel Contreras 18797
@@ -5,23 +8,14 @@
  */
 public class Principal {
     public static void main(String[] args) {
-        KeyComparator comparador = new KeyComparator();
-        System.out.println(comparador.compare("a", "b"));
+        
+        // leemos el archivo con las palabras
 
-        System.out.println(comparador.compare("ale", "leo"));
-
-        Association association = new Association("llave", "key", "llave en frances");
-
-        String[] array = association.getValue();
-
-        System.out.println(array[0]);
-
-        System.out.println(array[1]);
-
-        association.setValue("asdf", "bichita");
-
-        array= association.getValue();
-        System.out.println(array[1]);
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(null))
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
 
         
     }

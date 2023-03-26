@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 /**
  * Principal es la clase que interactua con el usuario y tiene el metodo main
@@ -9,12 +10,52 @@ import java.io.FileReader;
 public class Principal {
     public static void main(String[] args) {
         
-        // leemos el archivo con las palabras
+        // creamos una arraylist donde guardar las palabras del diccionario
+        ArrayList<String> lectura = new ArrayList<String>();
 
+        // leemos el archivo con las palabras
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(null))
+            BufferedReader reader = new BufferedReader(new FileReader("diccionario.txt"));
+            String line;
+            while ((line = reader.readLine())!= null) {
+                lectura.add(line);
+            }
+            reader.close();
         } catch (Exception e) {
-            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+        // creamos un arraylist de arrays para guardar las tres palabras
+        ArrayList<String[]> listadelistas = new ArrayList<String[]>();
+
+        // agregamos las ternas de palabras a la lista de listas
+        for (String string : lectura) {
+            String[] palabra = string.split(",");
+            listadelistas.add(palabra);
+        }
+
+        // creamos tres instancias de BST que representan los tres diccionarios
+        BST<String, String[]> diccionarioingles = new BST<String, String[]>(new AscendingStringComparator());
+        BST<String, String[]> diccionarioespanol = new BST<String, String[]>(new AscendingStringComparator());
+        BST<String, String[]> diccionariofrances = new BST<String, String[]>(new AscendingStringComparator());
+
+        
+        // agregamos todas las palabras al diccionario en ingles
+        for (String[] strings : listadelistas) {
+            String key = strings[0];
+            diccionarioingles.add(key, strings);
+        }
+        
+        // agregamos todas las palabras al diccionario en espanol
+        for (String[] strings : listadelistas) {
+            String key = strings[1];
+            diccionarioespanol.add(key, strings);
+        }
+
+        // agregamos todas las palabras al diccionario en frances
+        for (String[] strings : listadelistas) {
+            String key = strings[2];
+            diccionariofrances.add(key, strings);
         }
 
         

@@ -92,14 +92,13 @@ public class Principal {
 
         Scanner numero = new Scanner(System.in);
 
-        while (opcionusuario!=6) {
+        while (opcionusuario!=5) {
             System.out.println("Ingrese una opcion");
             System.out.println("1. Traducir texto");
             System.out.println("2. Mostrar arbol");
-            System.out.println("3. Agregar palabra al diccionario");
-            System.out.println("4. Eliminar palabra del diccionario");
-            System.out.println("5. Editar valor de una palabra");
-            System.out.println("6. Salir");
+            System.out.println("3. Eliminar palabra del diccionario");
+            System.out.println("4. Editar valor de una palabra");
+            System.out.println("5. Salir");
             opcionusuario = numero.nextInt();
 
             if (opcionusuario == 1) {
@@ -137,51 +136,6 @@ public class Principal {
             }
 
             if (opcionusuario == 3) {
-                String key;
-                String value;
-
-                Scanner texto = new Scanner(System.in);
-
-                int opcionlenguaje;
-                System.out.println("A que lenguaje desea agregar");
-                System.out.println("1. Ingles");
-                System.out.println("2. Espanol");
-                System.out.println("3. Frances");
-                opcionlenguaje = numero.nextInt();
-
-                if (opcionlenguaje == 1) {
-                    System.out.println("Que palabra desea agregar");
-                    // pedimos al usuario
-                    key = texto.nextLine();
-                    // convertimos a minusculas
-                    key = key.toLowerCase();
-                    // pedimos al usuario
-                    System.out.println("Ingrese las dos traducciones separadas por coma");
-                    value = texto.nextLine();
-                    // convertimos a minusculas
-                    value = value.toLowerCase();
-                    // agregamos al diccionario en ingles 
-                    diccionarioingles.add(key, value);
-                } else if (opcionlenguaje == 2) {
-                    System.out.println("Que palabra desea agregar");
-                    key = texto.nextLine();
-                    key = key.toLowerCase();
-                    System.out.println("Ingrese las traducciones separadas por coma");
-                    value = texto.nextLine();
-                    value = value.toLowerCase();
-                    diccionarioespanol.add(key, value);
-                }else {
-                    System.out.println("Que palabra desea agregar");
-                    key = texto.nextLine();
-                    key = key.toLowerCase();
-                    System.out.println("Ingrese las traducciones separadas por coma");
-                    value = texto.nextLine();
-                    value = value.toLowerCase();
-                    diccionariofrances.add(key, value);
-                }
-            }
-
-            if (opcionusuario == 4) {
                 int opcionlenguaje;
                 String palabra;
                 Scanner texto = new Scanner(System.in);
@@ -216,7 +170,7 @@ public class Principal {
                 }
             }
 
-            if (opcionusuario == 5) {
+            if (opcionusuario == 4) {
                 Scanner texto = new Scanner(System.in);
                 int opcionlenguaje;
                 System.out.println("Ingrese lenguaje a editar");
@@ -261,7 +215,7 @@ public class Principal {
             }
         }
 
-        if (opcionusuario==6) {
+        if (opcionusuario==5) {
             System.out.println("Usted ha elegido salir.");
         } 
     }

@@ -118,18 +118,7 @@ public class Principal {
             opcionusuario = numero.nextInt();
 
             if (opcionusuario == 1) {
-                // creamos un nuevo BufferedReader
-                /*try {
-                    BufferedReader readertwo = new BufferedReader(new FileReader("texto.txt"));
-                    String line;
-                    while ((line = readertwo.readLine())!= null) {
-                        line = line.toLowerCase();
-                        lecturados.add(line);
-                    }
-                    readertwo.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }*/
+                
 
                 int contadororaciones = 1;
                 System.out.println("Las opciones a traducir son:");
@@ -139,7 +128,208 @@ public class Principal {
                 }
                 System.out.println("Ingrese la opcion a traducir");
                 int opcionoracion = numero.nextInt();
-                System.out.println("Ingrese el idioma al que desea traducir");
+                System.out.println("Ingrese el idioma en el que se encuentra la oracion a traducir");
+                System.out.println("1. Espanol");
+                System.out.println("2. Ingles");
+                System.out.println("3. Frances");
+                int caracterizacionidioma = numero.nextInt();
+
+                if (caracterizacionidioma == 1) {
+                    System.out.println("Ingrese el idioma al que desea traducir");
+                    System.out.println("1. Ingles");
+                    System.out.println("2. Frances");
+                    int opcionidioma = numero.nextInt();
+                
+
+                    if (opcionidioma == 1) {
+                        // traducimos de espanol al ingles 
+                    
+                        String palabraatrducir = lecturados.get(opcionoracion-1);
+                        String[] listadepalabrasatraducir = palabraatrducir.split(" ");
+                        ArrayList<String> palabrastraducidas = new ArrayList<String>();
+                    
+                    for (String string : listadepalabrasatraducir) {
+                        
+                        String valor = diccionarioespanol.search(string);
+                        if (valor == null) {
+                            String stringtraducido = "*" + string + "*";
+                            palabrastraducidas.add(stringtraducido);
+                        } else{
+                            String[] value = valor.split(",");
+                            palabrastraducidas.add(value[0]);
+                        }
+                    }
+
+                    String palabratraducida = "";
+                    for (String string : palabrastraducidas) {
+                        palabratraducida = palabratraducida +" "+string;
+                    }
+
+                    System.out.println("La oracion traducida es:");
+                    System.out.println(palabratraducida);
+
+
+
+                } else {
+                    // traducimos al frances
+                    String palabraatrducir = lecturados.get(opcionoracion-1);
+                    String[] listadepalabrasatraducir = palabraatrducir.split(" ");
+                    ArrayList<String> palabrastraducidas = new ArrayList<String>();
+                    
+                    for (String string : listadepalabrasatraducir) {
+                        
+                        String valor = diccionarioespanol.search(string);
+                        if (valor == null) {
+                            String stringtraducido = "*" + string + "*";
+                            palabrastraducidas.add(stringtraducido);
+                        } else{
+                            String[] value = valor.split(",");
+                            palabrastraducidas.add(value[1]);
+                        }
+                    }
+
+                    String palabratraducida = "";
+                    for (String string : palabrastraducidas) {
+                        palabratraducida = palabratraducida +" "+string;
+                    }
+
+                    System.out.println("La oracion traducida es:");
+                    System.out.println(palabratraducida);
+                } 
+
+                } else if (caracterizacionidioma == 2){
+                    System.out.println("Ingrese el idioma al que desea traducir");
+                    System.out.println("1. Espanol");
+                    System.out.println("2. Frances");
+                    int opcionidioma = numero.nextInt();
+                
+
+                    if (opcionidioma == 1) {
+                    // traducimos de espanol al espanol 
+                    
+                        String palabraatrducir = lecturados.get(opcionoracion-1);
+                        String[] listadepalabrasatraducir = palabraatrducir.split(" ");
+                        ArrayList<String> palabrastraducidas = new ArrayList<String>();
+                    
+                        for (String string : listadepalabrasatraducir) {
+                        
+                            String valor = diccionarioingles.search(string);
+                            if (valor == null) {
+                                String stringtraducido = "*" + string + "*";
+                                palabrastraducidas.add(stringtraducido);
+                            } else{
+                                String[] value = valor.split(",");
+                                palabrastraducidas.add(value[0]);
+                            }
+                        }
+
+                        String palabratraducida = "";
+                        for (String string : palabrastraducidas) {
+                            palabratraducida = palabratraducida +" "+string;
+                        }
+
+                        System.out.println("La oracion traducida es:");
+                        System.out.println(palabratraducida);
+
+
+
+                    } else {
+                        // traducimos al frances
+                        String palabraatrducir = lecturados.get(opcionoracion-1);
+                        String[] listadepalabrasatraducir = palabraatrducir.split(" ");
+                        ArrayList<String> palabrastraducidas = new ArrayList<String>();
+                    
+                        for (String string : listadepalabrasatraducir) {
+                        
+                            String valor = diccionarioingles.search(string);
+                            if (valor == null) {
+                                String stringtraducido = "*" + string + "*";
+                                palabrastraducidas.add(stringtraducido);
+                            } else{
+                                String[] value = valor.split(",");
+                                palabrastraducidas.add(value[1]);
+                            }
+                        }
+
+                        String palabratraducida = "";
+                        for (String string : palabrastraducidas) {
+                            palabratraducida = palabratraducida +" "+string;
+                        }
+
+                        System.out.println("La oracion traducida es:");
+                        System.out.println(palabratraducida);
+                    } 
+
+                } else {
+                    System.out.println("Ingrese el idioma al que desea traducir");
+                    System.out.println("1. Ingles");
+                    System.out.println("2. Espanol");
+                    int opcionidioma = numero.nextInt();
+                
+
+                    if (opcionidioma == 1) {
+                        // traducimos de espanol al ingles 
+                    
+                        String palabraatrducir = lecturados.get(opcionoracion-1);
+                        String[] listadepalabrasatraducir = palabraatrducir.split(" ");
+                        ArrayList<String> palabrastraducidas = new ArrayList<String>();
+                    
+                        for (String string : listadepalabrasatraducir) {
+                        
+                            String valor = diccionariofrances.search(string);
+                            if (valor == null) {
+                                String stringtraducido = "*" + string + "*";
+                                palabrastraducidas.add(stringtraducido);
+                            } else{
+                                String[] value = valor.split(",");
+                                palabrastraducidas.add(value[0]);
+                            }
+                        }
+
+                        String palabratraducida = "";
+                        for (String string : palabrastraducidas) {
+                            palabratraducida = palabratraducida +" "+string;
+                        }
+
+                        System.out.println("La oracion traducida es:");
+                        System.out.println(palabratraducida);
+
+
+
+                    } else {
+                        // traducimos al espanol
+                        String palabraatrducir = lecturados.get(opcionoracion-1);
+                        String[] listadepalabrasatraducir = palabraatrducir.split(" ");
+                        ArrayList<String> palabrastraducidas = new ArrayList<String>();
+                    
+                        for (String string : listadepalabrasatraducir) {
+                        
+                            String valor = diccionariofrances.search(string);
+                            if (valor == null) {
+                                String stringtraducido = "*" + string + "*";
+                                palabrastraducidas.add(stringtraducido);
+                            } else{
+                                String[] value = valor.split(",");
+                                palabrastraducidas.add(value[1]);
+                            }
+                        }
+
+                        String palabratraducida = "";
+                        for (String string : palabrastraducidas) {
+                            palabratraducida = palabratraducida +" "+string;
+                        }
+
+                        System.out.println("La oracion traducida es:");
+                        System.out.println(palabratraducida);
+                    } 
+
+                }
+                
+                
+                
+                
+                
+                /*System.out.println("Ingrese el idioma al que desea traducir");
                 System.out.println("1. Ingles");
                 System.out.println("2. Frances");
                 int opcionidioma = numero.nextInt();
@@ -199,7 +389,7 @@ public class Principal {
 
                     System.out.println("La oracion traducida es:");
                     System.out.println(palabratraducida);
-                } 
+                }*/ 
 
             }
 

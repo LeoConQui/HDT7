@@ -95,6 +95,19 @@ public class Principal {
 
         Scanner numero = new Scanner(System.in);
 
+        // creamos un nuevo BufferedReader
+        try {
+            BufferedReader readertwo = new BufferedReader(new FileReader("texto.txt"));
+            String line;
+            while ((line = readertwo.readLine())!= null) {
+                line = line.toLowerCase();
+                lecturados.add(line);
+            }
+            readertwo.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         while (opcionusuario!=5) {
             System.out.println("Ingrese una opcion");
             System.out.println("1. Traducir texto");
@@ -106,7 +119,7 @@ public class Principal {
 
             if (opcionusuario == 1) {
                 // creamos un nuevo BufferedReader
-                try {
+                /*try {
                     BufferedReader readertwo = new BufferedReader(new FileReader("texto.txt"));
                     String line;
                     while ((line = readertwo.readLine())!= null) {
@@ -116,7 +129,7 @@ public class Principal {
                     readertwo.close();
                 } catch (Exception e) {
                     e.printStackTrace();
-                }
+                }*/
 
                 int contadororaciones = 1;
                 System.out.println("Las opciones a traducir son:");
